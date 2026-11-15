@@ -79,3 +79,7 @@ Default audio balance: music 5%, sound effects 75%. Saves still using the previo
 Inside an iframe, the game automatically uses a compact campaign menu and a viewport-sized farm with reserved objective and control bands. The player does not need to scroll the embedded document to reach water, animals or shipments. `?embed=1` enables this presentation for direct testing. Standalone play keeps the established layout.
 
 The portal may sandbox browser storage. The game remains playable with in-memory progress and reports that saving is unavailable; use JSON export/import or open the original game when persistent storage is allowed. Existing save keys and saved data are unchanged.
+
+### Large and dense displays (1.0.2)
+
+The farm uses a display-density canvas and higher-resolution vector rasterizations. Well/workshop labels and floating grass messages stay sharp as the player expands. Rendering is bounded to a 4000-pixel buffer edge; the same logical coordinates and click targets are preserved.

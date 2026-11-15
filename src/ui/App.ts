@@ -1,5 +1,6 @@
 import {localizeTree,setLanguage,t,type Language} from '../i18n';
 import {farmPresentation,farmHudRects} from './FarmLayout';
+import {renderSurface} from './RenderQuality';
 import Phaser from 'phaser';
 import {BootScene} from '../scenes/BootScene';
 import {FarmScene} from '../scenes/FarmScene';
@@ -66,7 +67,7 @@ export class App {
  private bootFarm():void {
   this.scene=new FarmScene({simulation:()=>this.sim,paused:this.isPaused,tick:()=>this.tick(),events:e=>this.events(e),market:()=>{if(!this.isPaused())this.market();},well:()=>{if(!this.isPaused())this.sim?.refill();},action:()=>this.audio.unlock(),reduced:()=>this.saves.progress.settings.reducedMotion,effects:()=>this.saves.progress.settings.effects,hud:()=>this.game?farmHudRects(this.root,this.game.canvas):[]});
   this.game=new Phaser.Game({type:new URLSearchParams(location.search).get('renderer')==='canvas'?Phaser.CANVAS:Phaser.AUTO,parent:'farm-stage',width:1000,height:650,backgroundColor:'#b8cd8c',transparent:false,antialias:true,roundPixels:false,scale:{mode:Phaser.Scale.FIT,autoCenter:Phaser.Scale.CENTER_BOTH},scene:[BootScene,this.scene],banner:false,audio:{noAudio:true},fps:{target:60,min:20,smoothStep:false}});
-  const game=this.game,stage=document.getElementById('farm-stage')!;const resize=()=>{if(!game.isBooted)return;const box=stage.getBoundingClientRect();const compact=this.embedded||matchMedia('(max-width:1000px), (pointer:coarse)').matches;const layout=farmPresentation(box.width,box.height,compact);if(Math.abs(game.scale.height-layout.height)>1)game.scale.resize(1000,layout.height);game.scale.refresh();};this.resizeObserver=new ResizeObserver(resize);this.resizeObserver.observe(stage);game.events.once('ready',resize);requestAnimationFrame(resize);
+  const game=this.game,stage=document.getElementById('farm-stage')!;const resize=()=>{if(!game.isBooted)return;const box=stage.getBoundingClientRect();const compact=this.embedded||matchMedia('(max-width:1000px), (pointer:coarse)').matches;const layout=farmPresentation(box.width,box.height,compact);const surface=renderSurface(box.width,layout.height,window.devicePixelRatio);if(game.scale.width!==surface.width||game.scale.height!==surface.height)game.scale.resize(surface.width,surface.height);game.scale.refresh();};this.resizeObserver=new ResizeObserver(resize);this.resizeObserver.observe(stage);game.events.once('ready',resize);requestAnimationFrame(resize);
  }
  private tick():void {
   if(!this.sim)return;

@@ -4,11 +4,11 @@
 ## Current phase
 development
 ## Current milestone
-[01 — Compact portal player](milestones/01-embedded-layout.md)
+[02 — Sharp farm rendering](milestones/02-render-sharpness.md)
 ## Last action
-Implemented an iframe-specific compact campaign menu and a bounded farm with reserved HUD bands, retaining the standalone layout. Found the portal's storage-restricted frame could crash before rendering; added guarded storage access and an exportable in-memory fallback. Version 1.0.1 begins tracked releases. Verified 148 unit tests, a full 24-case browser run and a final 9-case iframe sweep; previewed the build inside the real portal shell without page errors.
+Added display-density backing buffers, 2–4× SVG rasterizations, camera projection into the unchanged 1000-unit view, and high-resolution Text sources. Sprite sizes and explicit product hit areas compensate for texture density. The targeted DPR 1/2/3 checks, 150 unit tests, full 30-case browser suite, strict build and publisher validation passed. The final test report survived the executor disconnection and was verified after reconnecting.
 ## Next step
-Owner checks the compact presentation on the portal. Deployment outcome and exact source SHA are recorded by GitHub Actions and the v1.0.1 release.
+Owner reviews sharpness at their usual player size. GitHub Actions and the v1.0.2 release record deployment status and exact source commit.
 ## Blockers
 None for implementation. Browser sandbox policy may deny localStorage; persistent saves then require an allowed origin or JSON export/import.
 ## Notes for next session
