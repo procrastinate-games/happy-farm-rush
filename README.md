@@ -73,3 +73,9 @@ Use the corner-expand button to request **native fullscreen**, which hides brows
 The owner-supplied **Breakfast in the Orchard** MP3 plays quietly on repeat throughout the game. Settings → Background music controls its volume independently of sound effects. Playback begins after user interaction, continues through menus, purchases and shipments, pauses in a hidden browser tab, and resumes from its existing position. The original supplied recording is preserved; native repeat does not guarantee a musically seamless boundary.
 
 Default audio balance: music 5%, sound effects 75%. Saves still using the previous default pair (12% / 45%) adopt this balance on load; other custom volume settings are preserved.
+
+## Portal player (1.0.1)
+
+Inside an iframe, the game automatically uses a compact campaign menu and a viewport-sized farm with reserved objective and control bands. The player does not need to scroll the embedded document to reach water, animals or shipments. `?embed=1` enables this presentation for direct testing. Standalone play keeps the established layout.
+
+The portal may sandbox browser storage. The game remains playable with in-memory progress and reports that saving is unavailable; use JSON export/import or open the original game when persistent storage is allowed. Existing save keys and saved data are unchanged.

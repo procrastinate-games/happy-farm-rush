@@ -69,3 +69,14 @@ After replacing the oscillator with the owner-supplied MP3, `npm test` passed al
 ## Continuous menu music
 
 Music now continues across game dialogs and navigation, including pause and market panels. The simulation still pauses normally. The three updated music browser cases passed on desktop and both mobile orientations, verifying advancing playback through pause/resume and market menus plus hidden-tab audio suspension. All 147 unit tests and the strict production build also passed. Music remains gated by user interaction, mute, volume and browser-tab visibility.
+
+
+## Portal iframe update — 1.0.1 (2026-11-15)
+
+`npm test`: **148 passed**, five files. The added regression first reproduced a throwing localStorage getter and then verified exportable in-memory progress with a clear unavailable-saving result. Save keys and schema are unchanged.
+
+`npm run build`: passed strict TypeScript and Vite. `npx --yes github:procrastinate-games/game-publisher#v1`: validated public and dist manifests.
+
+A full **24-case** Chromium run passed for campaign completion/medals, every production chain and shipments, bears, language, audio, standalone HUD and the initial six embedded cases. After the final storage guard, narrow-header refinement and embedded warehouse-label adjustment, **nine targeted iframe cases passed**: explicit compact mode, automatic iframe detection with late-game cow purchase, and a deliberately opaque storage-denied sandbox, across desktop and both phone orientations. The sandbox fixture enables CORS on its asset responses so it tests denied storage rather than failing to fetch modules. Twenty-seven distinct browser cases are covered across these runs; this is not a claim of a separate final 27-case run.
+
+The final build was also loaded in the actual portal shell using local artifact responses, at the real 1318 × 680 frame size. Read-only state showed an active farm, version 1.0.1, progressing time, a canvas at y=96 with height=516 and no page errors. Screenshots: `portal-menu-preview.png`, `portal-farm-preview.png`, and `embed-*.png` under screenshots/. Before the fix this browser denied third-party localStorage and the frame stayed blank. The new guard permits play and warns that persistence is unavailable; it cannot override browser privacy policy. Physical-device performance and subjective presentation remain for owner playtesting.

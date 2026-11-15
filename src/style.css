@@ -79,3 +79,52 @@
  .playing .objectives{height:45px}.playing .objective{min-height:44px;align-items:center}
  .playing .objective b{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;white-space:normal;max-height:26px}
 }
+
+/* The portal owns the page; an embedded game owns only its player viewport. */
+.release-version{font-size:10px;color:var(--muted);white-space:nowrap}.dialog>.release-version{display:block;text-align:center;margin-top:12px}
+body.embedded{height:100dvh;overflow:hidden;overscroll-behavior:none}
+.embedded #app{height:100%;display:flex;flex-direction:column;overflow:hidden}
+.embedded .masthead{height:52px;min-height:52px;width:100%;padding:0 18px;gap:12px;background:var(--paper)}
+.embedded .brand{font-size:20px;line-height:18px}.embedded .brand-mark{height:32px;width:32px}.embedded .brand-mark svg{width:24px;height:24px}.embedded .brand-rush{font-size:7px;letter-spacing:5px;margin-top:3px}
+.embedded .header-note,.embedded #app>.footer{display:none}.embedded .masthead nav{gap:14px}.embedded .masthead button{min-height:44px}.embedded .masthead .icon-btn{width:44px;border-radius:10px}
+.embedded #view{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.embedded .welcome{padding:14px 24px;display:block;margin:0;background:linear-gradient(115deg,#e8edda,#faf7ee);max-width:none}
+.embedded .welcome h1,.embedded .welcome-copy>p,.embedded .welcome .eyebrow,.embedded .welcome-meta,.embedded .hero-art{display:none}
+.embedded .hero-actions{margin:0;gap:20px}.embedded .hero-actions .primary{min-height:44px}
+.embedded .journey{margin:0;padding:18px 24px 24px;max-width:none}.embedded .journey .section-heading{margin-bottom:14px}.embedded .journey h2{font-size:26px}.embedded .journey .eyebrow{display:none}
+.embedded .chapter{margin:0 0 16px}.embedded .chapter-title{margin:8px 0;font-size:9px}.embedded .level-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.embedded .level-card{min-height:98px;padding:10px;gap:7px}.embedded .level-name{font-size:15px}.embedded .level-medal small{font-size:9px}.embedded .level-number{height:25px;width:25px;font-size:11px}
+.embedded .shop{padding:20px 24px}.embedded .shop h1{font-size:30px;margin:8px 0}.embedded .shop .eyebrow{display:none}.embedded .shop-grid{margin:18px 0}.embedded .upgrade-card{padding:16px}
+/* Reserved HUD bands keep every building and pickup point outside the controls. */
+.embedded.playing #app{display:block}.embedded.playing .masthead{display:none}.embedded.playing #view{height:100%;overflow:hidden}
+.embedded.playing .farm-shell{position:relative;isolation:isolate;height:100%;width:100%;max-width:none;margin:0;padding:0;display:block}
+.embedded.playing .farm-layout{display:contents}
+.embedded.playing .farm-stage-wrap{position:absolute;inset:96px 0 68px;z-index:0;width:100%;height:auto;max-width:none!important;min-height:0;border:0;border-radius:0;box-shadow:none;overflow:hidden}
+.embedded.playing #farm-stage{width:100%;height:100%;aspect-ratio:auto}.embedded.playing .stage-caption{display:none}
+.embedded.playing .farm-heading{position:absolute;inset:0 0 auto;height:50px;width:100%;padding:3px 12px;display:flex;align-items:center;gap:8px;margin:0;background:var(--paper);pointer-events:auto}
+.embedded.playing .farm-heading>div:first-child{flex:1;min-width:0;max-width:none;background:none;border:0;box-shadow:none}.embedded.playing .farm-heading .eyebrow{display:none}.embedded.playing .farm-heading h2{font-size:18px;line-height:24px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:0;padding:0}
+.embedded.playing .farm-stats{display:flex;align-items:center;gap:8px;margin-left:auto}.embedded.playing .farm-stats .stat{background:none;border:0;box-shadow:none;min-width:52px;display:grid;grid-template-columns:16px auto;gap:3px;padding:0}.embedded.playing .stat b{font-size:17px}.embedded.playing .stat small{display:none}.embedded.playing .stat svg{width:16px;height:16px;grid-row:auto}
+.embedded.playing .farm-stats>button{position:static!important;min-width:44px;width:44px;height:44px;padding:0;border:1px solid var(--line);border-radius:10px;background:#f0f2e5;box-shadow:none;display:inline-grid;place-items:center;pointer-events:auto}
+.embedded.playing .farm-stats #mute,.embedded.playing .farm-stats [data-action=fullscreen]{display:none}
+.embedded.playing .farm-sidebar{position:absolute;inset:50px 0 auto;height:46px;width:100%;max-width:none;display:block;margin:0;padding:3px 12px;background:#eff2e1;pointer-events:auto}
+.embedded.playing .farm-sidebar>.eyebrow,.embedded.playing .medal-targets,.embedded.playing .farm-tip,.embedded.playing .aid-button{display:none}
+.embedded.playing .objectives{height:40px;display:flex;flex-direction:row;flex-wrap:nowrap;gap:8px;margin:0;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin}
+.embedded.playing .objective{flex:0 0 210px;min-width:0;max-width:none;min-height:38px;margin:0;padding:3px 6px;grid-template-columns:22px minmax(0,1fr);gap:5px;border:1px solid #dce4c6;border-radius:8px;background:#fffaf0;box-shadow:none;align-items:center}
+.embedded.playing .objective-icon,.embedded.playing .objective-icon img{width:22px;height:22px}.embedded.playing .objective b{font:700 10px/1.2 'Trebuchet MS',Verdana,sans-serif;white-space:normal;padding-right:30px;max-height:25px}.embedded.playing .objective small{display:none}.embedded.playing .objective>strong{font-size:10px;right:6px;top:5px}.embedded.playing .objective-track{height:3px;margin-top:3px}
+.embedded.playing .farm-controls{position:absolute;inset:auto 0 0;height:68px;display:flex;align-items:stretch;flex-wrap:nowrap;gap:8px;margin:0;padding:6px 12px;background:var(--paper);border:0;pointer-events:auto}
+.embedded.playing .animal-controls{flex:1;min-width:0;margin:0}.embedded.playing .animal-controls>small{display:none}.embedded.playing .animal-controls>div{display:flex;height:100%;gap:6px}.embedded.playing .multiple-animals>div{display:none}
+.embedded.playing .animal-buy,.embedded.playing .animal-menu-button{min-width:66px;width:70px;max-width:80px;height:100%;min-height:44px;margin:0;padding:2px 5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;background:#f0f2e5;border:1px solid #d8e2c1;border-radius:10px;position:relative;pointer-events:auto;box-shadow:none}
+.embedded.playing .animal-menu-button{display:none}.embedded.playing .multiple-animals>.animal-menu-button{display:flex}.embedded.playing .animal-buy img,.embedded.playing .animal-menu-button img{width:36px;height:28px}.embedded.playing .animal-buy>span b{font-size:0;line-height:0}.embedded.playing .animal-buy small{font-size:10px}.embedded.playing .animal-buy small svg{width:10px;height:10px}.embedded.playing .animal-buy i,.embedded.playing .animal-menu-button small{position:absolute;right:4px;top:3px;font-size:9px}.embedded.playing .animal-menu-button b{font-size:10px}.embedded.playing .buy-plus,.embedded.playing .animal-menu-button strong{position:absolute;left:4px;top:1px;font-size:14px}
+.embedded.playing .farm-controls>button{flex:0 0 auto;width:115px;min-width:0;min-height:44px;margin:0;padding:4px 8px;border-radius:10px;box-shadow:none;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:8px;background:#f0f2e5;border:1px solid #d8e2c1}
+.embedded.playing .farm-controls>button>svg{width:20px;height:20px}.embedded.playing .farm-controls>button>span>b{font-size:11px}.embedded.playing .farm-controls>button>span>small{font-size:9px;white-space:nowrap;display:block}.embedded.playing .well-control small{display:none!important}.embedded.playing .truck-control{background:#355c47!important;color:#fff8df}.embedded.playing .truck-control>svg:last-child{display:none}
+.embedded.playing .workshop-strip{display:none}.embedded .overlay-backdrop{padding:12px}.embedded .dialog{max-height:calc(100dvh - 24px);max-width:calc(100vw - 24px)}.embedded #toast{bottom:78px}
+@media(max-width:700px){
+ .embedded .masthead{padding:0 10px;gap:8px}.embedded .masthead .brand{font-size:16px}.embedded .masthead .brand-mark,.embedded .brand-rush,.embedded .stars-badge>span{display:none}.embedded .masthead nav{gap:6px}.embedded .masthead .nav-btn span{display:none}.embedded .masthead .nav-btn{width:38px;justify-content:center}.embedded .masthead .release-version{font-size:9px}.embedded .stars-badge{padding:6px}
+ .embedded .welcome{padding:10px 14px}.embedded .hero-actions{gap:10px;justify-content:space-between}.embedded .hero-actions .text-btn{font-size:10px}.embedded .journey{padding:14px}.embedded .level-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.embedded .level-card{min-height:92px}.embedded .chapter-title small{display:none}
+ .embedded.playing .farm-heading{padding:3px 8px}.embedded.playing .farm-heading>div:first-child{display:none}.embedded.playing .farm-stats{width:100%;justify-content:space-between;gap:4px}.embedded.playing .farm-stats .stat{min-width:48px}.embedded.playing .farm-controls{gap:5px;padding:6px 8px}.embedded.playing .farm-controls>button{width:64px;flex-direction:column;gap:2px;padding:3px}.embedded.playing .farm-controls>button>svg{width:16px;height:16px}.embedded.playing .farm-controls>button>span>b{font-size:10px;line-height:12px}.embedded.playing .farm-controls>button>span>small{font-size:8px}.embedded.playing .truck-control{width:78px}
+}
+.embedded.playing .farm-layout{display:block;position:absolute;inset:50px 0 68px}
+.embedded.playing .farm-sidebar{inset:0 0 auto;z-index:2}
+.embedded.playing .farm-stage-wrap{inset:46px 0 0;height:calc(100% - 46px);align-self:auto}
+.embedded.playing .farm-heading,.embedded.playing .farm-controls{z-index:3}
+@media(max-width:420px){.embedded .masthead .brand>span:last-child{display:none}.embedded .masthead .brand-mark{display:grid}.embedded .masthead .brand{min-width:36px}}

@@ -7,10 +7,11 @@ import {validateSave} from './SaveValidation';
 export const SAVE_KEY='happy-farm-rush-v1';
 export const newProgress=():Progress=>({version:1,unlocked:1,stars:0,spent:0,totalEarned:0,best:{},upgrades:emptyUpgrades(),settings:{language:'ru',sound:0.75,music:0.05,muted:false,effects:true,reducedMotion:typeof matchMedia!=='undefined'&&matchMedia('(prefers-reduced-motion: reduce)').matches},achievements:[],active:null});
 export function parseSave(raw:string):Progress {if(raw.length>2000000)throw new Error('Save file is too large.');const v:unknown=JSON.parse(raw);if(v&&typeof v==='object'&&'settings' in v&&v.settings&&typeof v.settings==='object'&&!('language' in v.settings))Object.assign(v.settings,{language:'ru'});if(!validateSave(v))throw new Error('This is not a valid Happy Farm Rush v1 save.');if(v.settings.sound===0.45&&v.settings.music===0.12){v.settings.sound=0.75;v.settings.music=0.05;}return v;}
+function browserStorage():Storage|null {try{return typeof localStorage==='undefined'?null:localStorage;}catch{return null;}}
 export class SaveManager {
  progress:Progress;error='';
- constructor(private storage:Pick<Storage,'getItem'|'setItem'|'removeItem'>|null=typeof localStorage==='undefined'?null:localStorage){this.progress=newProgress();try{const raw=storage?.getItem(SAVE_KEY);if(raw)this.progress=parseSave(raw);}catch{this.error='Your save could not be loaded. Export it before resetting; a new game is ready.';}}
- save():boolean{try{this.storage?.setItem(SAVE_KEY,JSON.stringify(this.progress));this.error='';return true;}catch{this.error='Saving is unavailable. Export your progress from Settings.';return false;}}
+ constructor(private storage:Pick<Storage,'getItem'|'setItem'|'removeItem'>|null=browserStorage()){this.progress=newProgress();if(!storage)this.error='Saving is unavailable. Export your progress from Settings.';try{const raw=storage?.getItem(SAVE_KEY);if(raw)this.progress=parseSave(raw);}catch{this.error='Your save could not be loaded. Export it before resetting; a new game is ready.';}}
+ save():boolean{try{if(!this.storage)throw new Error('Storage unavailable');this.storage.setItem(SAVE_KEY,JSON.stringify(this.progress));this.error='';return true;}catch{this.error='Saving is unavailable. Export your progress from Settings.';return false;}}
  snapshot(s:FarmState):void{this.progress.active=structuredClone(s);this.save();}
  complete(s:FarmState):{medal:number;earned:number} {
   if(!s.complete)return {medal:0,earned:0};const l=LEVELS[s.level-1],medal=medalFor(s.time,l.gold,l.silver);const previous=this.progress.best[s.level];
