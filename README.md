@@ -83,3 +83,7 @@ The portal may sandbox browser storage. The game remains playable with in-memory
 ### Large and dense displays (1.0.2)
 
 The farm uses a display-density canvas and higher-resolution vector rasterizations. Well/workshop labels and floating grass messages stay sharp as the player expands. Rendering is bounded to a 4000-pixel buffer edge; the same logical coordinates and click targets are preserved.
+
+## Play more browser games
+
+Find this game and the rest of the collection at [Games to Procrastinate To](https://procrastinate.games/).
